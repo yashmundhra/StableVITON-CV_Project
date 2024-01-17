@@ -4,5 +4,5 @@ __pycache__/
 .vscode/
 *.pyc
 
-# VITON-HD dataset symlink
-VITON-HD 
+# output data path
+VITONHD
