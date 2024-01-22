@@ -124,4 +124,3 @@ dependencies:
       - xformers==0.0.19
       - yarl==1.9.4
       - zipp==3.17.0
-prefix: /home/workspace/.miniconda3/envs/StableVITON
