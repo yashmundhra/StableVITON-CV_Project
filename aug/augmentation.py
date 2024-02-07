@@ -13,8 +13,8 @@ transform_flip = A.Compose(
 
 # Applied to clothing and U-Net's input
 transform_shift_scale = A.Compose([
-    A.ShiftScaleRotate(shift_limit=0.2, scale_limit=0, rotate_limit=0, p=0.5, border_mode=BORDER_CONSTANT),
-    A.ShiftScaleRotate(shift_limit=0, scale_limit=0.2, rotate_limit=0, p=0.5, border_mode=BORDER_CONSTANT)],
+    A.ShiftScaleRotate(shift_limit=0, scale_limit=0.2, rotate_limit=0, p=0.5, border_mode=BORDER_CONSTANT),
+    A.ShiftScaleRotate(shift_limit=0.2, scale_limit=0, rotate_limit=0, p=0.5, border_mode=BORDER_CONSTANT),],
     additional_targets={
         'cloth': 'image'
     }
