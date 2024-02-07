@@ -34,6 +34,31 @@ def image_int_to_float(img, is_mask=False, invert_mask=False):
         img = (img.astype(np.float32) / 127.5) - 1.0
     return img
 
+def train_augmentation(images_dict):
+    image = images_dict['image']
+    cloth = images_dict['cloth']
+    agn = images_dict['agn']
+    agn_mask = images_dict['agn_mask']
+    image_densepose = images_dict['image_densepose']
+
+    aug = transform_flip(image=cloth , agn=agn, agn_mask=agn_mask, image_densepose=image_densepose)
+    cloth, agn, agn_mask, image_densepose = \
+        aug['image'], aug['agn'], aug['agn_mask'], aug['image_densepose']
+    
+    aug = transform_shift_scale(image=image, cloth=cloth)
+    cloth, image = aug['cloth'], aug['image']
+
+    aug = transform_color(image=image, cloth=cloth)
+    cloth, image = aug['cloth'], aug['image']
+
+    return dict(
+        image=image,
+        cloth=cloth,
+        agn=agn,
+        agn_mask=agn_mask,
+        image_densepose=image_densepose
+    )    
+
 class VITONHDDataset(Dataset):
     def __init__(
             self, 
@@ -87,15 +112,18 @@ class VITONHDDataset(Dataset):
             map(lambda img: cv.resize(img, (self.img_W, self.img_H)), [agn, agn_mask, cloth, image, image_densepose])
         
         if not self.is_test: # train
-            aug = transform_flip(image=cloth , agn=agn, agn_mask=agn_mask, image_densepose=image_densepose)
-            cloth, agn, agn_mask, image_densepose = \
-                aug['image'], aug['agn'], aug['agn_mask'], aug['image_densepose']
-            
-            aug = transform_shift_scale(image=image, cloth=cloth)
-            cloth, image = aug['cloth'], aug['image']
-
-            aug = transform_color(image=image, cloth=cloth)
-            cloth, image = aug['cloth'], aug['image']
+            aug = train_augmentation(dict(
+                agn=agn,
+                agn_mask=agn_mask,
+                cloth=cloth,
+                image=image,
+                image_densepose=image_densepose,
+            ))
+            agn = aug['agn']
+            agn_mask = aug['agn_mask']
+            cloth = aug['cloth']
+            image = aug['image']
+            image_densepose = aug['image_densepose']
         
         agn, cloth, image, image_densepose = \
             map(image_int_to_float, [agn, cloth, image, image_densepose])
