@@ -34,6 +34,9 @@ def image_int_to_float(img, is_mask=False, invert_mask=False):
         img = (img.astype(np.float32) / 127.5) - 1.0
     return img
 
+def get_image_border_majority_color(image):
+    border = image[[0,-1], :]
+
 def train_augmentation(images_dict):
     image = images_dict['image']
     cloth = images_dict['cloth']
@@ -44,9 +47,9 @@ def train_augmentation(images_dict):
     aug = transform_flip(image=cloth , agn=agn, agn_mask=agn_mask, image_densepose=image_densepose)
     cloth, agn, agn_mask, image_densepose = \
         aug['image'], aug['agn'], aug['agn_mask'], aug['image_densepose']
-    
-    aug = transform_shift_scale(image=image, cloth=cloth)
-    cloth, image = aug['cloth'], aug['image']
+
+    cloth = transform_shift_scale_pad(image=cloth)
+    image = transform_shift_scale_pad(image=image)
 
     aug = transform_color(image=image, cloth=cloth)
     cloth, image = aug['cloth'], aug['image']
