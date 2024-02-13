@@ -2,10 +2,11 @@
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/cuda-11.7/lib64"
 CUDA_VISIBLE_DEVICES=0 
 
-python inference.py \
+conda run -n StableVITON python inference.py \
     --config_path ./configs/VITON512.yaml \
     --model_load_path ./ckpts/VITONHD.ckpt \
-    --save_dir VITONHD \
+    --data_root_dir ./DATA/VITONHD \
+    --save_dir VITONHD_CUSTOM \
     --batch_size 1 \
     --unpair
 
