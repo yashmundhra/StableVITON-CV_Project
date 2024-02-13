@@ -34,9 +34,6 @@ def image_int_to_float(img, is_mask=False, invert_mask=False):
         img = (img.astype(np.float32) / 127.5) - 1.0
     return img
 
-def get_image_border_majority_color(image):
-    border = image[[0,-1], :]
-
 def train_augmentation(images_dict):
     image = images_dict['image']
     cloth = images_dict['cloth']
