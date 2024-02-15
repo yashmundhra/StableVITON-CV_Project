@@ -45,8 +45,8 @@ def train_augmentation(images_dict):
     cloth, agn, agn_mask, image_densepose = \
         aug['image'], aug['agn'], aug['agn_mask'], aug['image_densepose']
 
-    cloth = transform_shift_scale_pad(image=cloth)
-    image = transform_shift_scale_pad(image=image)
+    cloth = transform_shift_scale(image=cloth)['image']
+    image = transform_shift_scale(image=image)['image']
 
     aug = transform_color(image=image, cloth=cloth)
     cloth, image = aug['cloth'], aug['image']
