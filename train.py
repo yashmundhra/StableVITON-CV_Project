@@ -129,10 +129,10 @@ if __name__ == '__main__':
         
             
     resume_path = './models/clone_with_control_model_20240204.ckpt'
-    batch_size = 24
+    batch_size = 9
     logger_freq = 300
     learning_rate = 1e-4
-    epochs = 100 
+    epochs = 2000 
     only_mid_control = False
     
     viton_config_path_model = './configs/VITON512.yaml'
