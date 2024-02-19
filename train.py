@@ -5,7 +5,7 @@ import argparse
 
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
-from cldm.logger import ImageLogger
+#from cldm.logger import ImageLogger
 from cldm.model import create_model, load_state_dict
 from dataset_aug import VITONHDDataset_aug
 
@@ -13,7 +13,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint, Callback
 from datetime import datetime
 import yaml
 
-from API.slack import SlackMessenger
+#from API.slack import SlackMessenger
 
 import socket
 
