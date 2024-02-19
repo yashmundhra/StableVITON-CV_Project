@@ -24,6 +24,7 @@ model:
     use_pbe_weight: True
     u_cond_percent: 0.2
     use_attn_mask: False
+    only_agn_simple_loss: False
 
     control_stage_config:
       target: cldm.warping_cldm_network.NoZeroConvControlNet

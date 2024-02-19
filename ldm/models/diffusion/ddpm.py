@@ -547,12 +547,14 @@ class LatentDiffusion(DDPM):
                  scale_factor=1.0,
                  scale_by_std=False,
                  force_null_conditioning=False,
+                 only_agn_simple_loss=False,
                  *args, **kwargs):
         self.kwargs = kwargs
         self.force_null_conditioning = force_null_conditioning
         self.num_timesteps_cond = default(num_timesteps_cond, 1)
         self.scale_by_std = scale_by_std
         self.cond_stage_trainable = cond_stage_trainable
+        self.only_agn_simple_loss = only_agn_simple_loss
         assert self.num_timesteps_cond <= kwargs['timesteps']
         if conditioning_key is None:
             conditioning_key = 'concat' if concat_mode else 'crossattn'

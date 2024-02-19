@@ -7,6 +7,8 @@ __pycache__/
 # output data path
 VITONHD
 VITONHD_CUSTOM
+checkpoints
+models
 
 # main inference script
 inference.sh

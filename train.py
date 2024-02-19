@@ -58,6 +58,13 @@ if __name__ == '__main__':
         max_epochs=2000,
         callbacks=[checkpoint_callback]  
     )
+        
+    viton_config_path_model = './configs/VITON512.yaml'
+    resume_path = '../stableviton_lightning/models/clone_with_control_model_20240204.ckpt'    
+    batch_size = 10
+    logger_freq = 300
+    learning_rate = 1e-4
+    epochs = 2000     
     
     if trainer.global_rank == 0:
         # 설정 저장 로직         
@@ -75,28 +82,17 @@ if __name__ == '__main__':
         
         learnable_vector = False
         data_augmentation = True
-        
-        
 
         checkpoint_dir = f'checkpoints/{current_time}/'       
         os.makedirs(checkpoint_dir, exist_ok=True) 
         
-        # Configs
-        resume_path1 = './models/clone_with_control_model_20240204.ckpt'
-        batch_size1 = 24
-        logger_freq1 = 300
-        learning_rate1 = 1e-4
-        epochs1 = 100  
-        
-        viton_config_path = './configs/VITON512.yaml'
-        
         config = {
             'checkpoint_dir': checkpoint_dir,
-            'batch_size': batch_size1,
-            'learning_rate': learning_rate1,
-            'epochs': epochs1,
-            'config_path': viton_config_path,
-            'resume_path' : resume_path1,
+            'batch_size': batch_size,
+            'learning_rate': learning_rate,
+            'epochs': epochs,
+            'config_path': viton_config_path_model,
+            'resume_path' : resume_path,
             'control_model' : control_model,                
             'model_diffusion_model_warp_flow_blks' : model_diffusion_model_warp_flow_blks,
             'model_diffusion_model_warp_zero_convs' : model_diffusion_model_warp_zero_convs,
@@ -110,7 +106,7 @@ if __name__ == '__main__':
             'data_augmentation' : data_augmentation
         }
         
-        with open(viton_config_path, 'r') as file:
+        with open(viton_config_path_model, 'r') as file:
             viton_config = yaml.load(file, Loader=yaml.FullLoader)
 
         # YAML 파일을 checkpoint_dir에 저장
@@ -126,24 +122,16 @@ if __name__ == '__main__':
             
         print('Configs !')
         print(config)
-        
-            
-    resume_path = './models/clone_with_control_model_20240204.ckpt'
-    batch_size = 9
-    logger_freq = 300
-    learning_rate = 1e-4
-    epochs = 2000 
-    only_mid_control = False
     
-    viton_config_path_model = './configs/VITON512.yaml'
+    
     model = create_model(viton_config_path_model).cpu()
     model.load_state_dict(load_state_dict(resume_path, location='cpu'))
     model.learning_rate = learning_rate
     #model.only_mid_control = only_mid_control
 
     # Misc
-    dataset = VITONHDDataset_aug(data_root_dir='./datasets',img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
-    dataloader = DataLoader(dataset, num_workers=10, batch_size=batch_size, shuffle=True)
+    dataset = VITONHDDataset_aug(data_root_dir='../stableviton_lightning/datasets',img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
+    dataloader = DataLoader(dataset, num_workers=4, batch_size=batch_size, shuffle=True)
 
     
     trainer.fit(model, dataloader)
