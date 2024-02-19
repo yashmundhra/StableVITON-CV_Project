@@ -12,7 +12,10 @@ import torch.nn.functional as F
 import numpy as np
 
 from ldm.models.diffusion.ddpm import LatentDiffusion
-from ldm.util import instantiate_from_config
+from ldm.util import log_txt_as_img, exists, instantiate_from_config
+
+from einops import rearrange, repeat
+from torchvision.utils import make_grid
 
 class ControlLDM(LatentDiffusion):
     def __init__(
@@ -29,6 +32,7 @@ class ControlLDM(LatentDiffusion):
             img_H=512,
             img_W=384,
             always_learnable_param=False,
+            only_agn_simple_loss=False,
             *args, 
             **kwargs
         ):
@@ -39,11 +43,14 @@ class ControlLDM(LatentDiffusion):
         self.img_W = img_W
         self.config_name = config_name
         self.always_learnable_param = always_learnable_param
-        super().__init__(*args, **kwargs)
+        super().__init__(only_agn_simple_loss=only_agn_simple_loss,*args, **kwargs)
         control_stage_config.params["use_VAEdownsample"] = use_VAEdownsample
         self.control_model = instantiate_from_config(control_stage_config)
         self.control_key = control_key
         self.only_mid_control = only_mid_control
+        
+        print(f"use_pbe_weight : {self.use_pbe_weight}")
+        
         if control_scales is None:
             self.control_scales = [1.0] * 13
         else:
@@ -118,6 +125,9 @@ class ControlLDM(LatentDiffusion):
                 
             eps = diffusion_model(x=x_noisy, timesteps=t, context=cond_txt, control=control, only_mid_control=self.only_mid_control)
         return eps, None
+    
+    
+    
     @torch.no_grad()
     def get_unconditional_conditioning(self, N):
         if not self.kwargs["use_imageCLIP"]:
@@ -128,10 +138,30 @@ class ControlLDM(LatentDiffusion):
         if is_diffusing:
             self.model = self.model.cuda()
             self.control_model = self.control_model.cuda()
-            self.first_stage_model = self.first_stage_model.cpu()
+            self.firsparam.requires_gradt_stage_model = self.first_stage_model.cpu()
             self.cond_stage_model = self.cond_stage_model.cpu()
         else:
             self.model = self.model.cpu()
             self.control_model = self.control_model.cpu()
             self.first_stage_model = self.first_stage_model.cuda()
             self.cond_stage_model = self.cond_stage_model.cuda()
+            
+            
+    def configure_optimizers(self):
+        lr = self.learning_rate
+        params = list(self.control_model.parameters())
+        params += list(self.model.diffusion_model.warp_flow_blks.parameters())
+        params += list(self.model.diffusion_model.warp_zero_convs.parameters())
+        params += list(self.model.diffusion_model.input_blocks.parameters())        
+        
+        if self.kwargs["use_imageCLIP"]:
+            params += list(self.proj_out.parameters())
+        if self.kwargs["use_lastzc"]:
+            params += list(self.lastzc.parameters())        
+            
+        #params += list(self.first_stage_model.parameters())           
+        #params += list(self.cond_stage_model.final_ln.parameters())
+        #params += list(self.cond_stage_model.mapper.resblocks.parameters())   
+        opt = torch.optim.AdamW(params, lr=lr)
+        return opt
+       
