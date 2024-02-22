@@ -13,6 +13,8 @@ from cldm.plms_hacked import PLMSSampler
 from cldm.model import create_model
 from utils import tensor2img
 
+import datetime
+
 def build_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config_path", type=str)
@@ -30,6 +32,11 @@ def build_args():
     args = parser.parse_args()
     return args
 
+def timestamp_now():
+    tz = datetime.timezone(datetime.timedelta(hours=9)) # KST == GMT+09
+    now = datetime.datetime.now(tz=tz)
+
+    return now.strftime('%Y_%m_%d_%H:%M:%S')
 
 @torch.no_grad()
 def main(args):
@@ -59,7 +66,7 @@ def main(args):
     dataloader = DataLoader(dataset, num_workers=4, shuffle=False, batch_size=batch_size, pin_memory=True)
 
     shape = (4, img_H//8, img_W//8) 
-    save_dir = opj(args.save_dir, "unpair" if args.unpair else "pair")
+    save_dir = opj(args.save_dir, timestamp_now() + ("_unpair" if args.unpair else "_pair"))
     os.makedirs(save_dir, exist_ok=True)
     for batch_idx, batch in enumerate(dataloader):
         print(f"{batch_idx}/{len(dataloader)}")
