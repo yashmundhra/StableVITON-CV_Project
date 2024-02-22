@@ -42,7 +42,7 @@ def main(args):
     config.model.params.img_W = args.img_W
     params = config.model.params
 
-    model = create_model(config_path=None, config=config)
+    model = create_model(config_path=args.config_path)
     model.load_state_dict(torch.load(args.model_load_path, map_location="cpu"))
     model = model.cuda()
     model.eval()
