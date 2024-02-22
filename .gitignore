@@ -5,8 +5,7 @@ __pycache__/
 *.pyc
 
 # output data path
-VITONHD
-VITONHD_CUSTOM
+output
 checkpoints
 models
 

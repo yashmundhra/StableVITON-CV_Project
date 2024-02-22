@@ -1,6 +1,6 @@
 [submodule "custom_data_preprocessing/detectron2"]
 	path = custom_data_preprocessing/detectron2
-	url = https://github.com/facebookresearch/detectron2
+	url = https://github.com/Junyoung-Shin-22/detectron2.git
 [submodule "custom_data_preprocessing/Self-Correction-Human-Parsing"]
 	path = custom_data_preprocessing/Self-Correction-Human-Parsing
 	url = https://github.com/GoGoDuck912/Self-Correction-Human-Parsing
