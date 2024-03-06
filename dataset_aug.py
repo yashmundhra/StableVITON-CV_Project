@@ -98,7 +98,7 @@ class VITONHDDataset_aug(Dataset):
         
         if not self.is_test: # train
             # apply transform_flip
-            target_keys = ['image', 'agn', 'agn_mask', 'cloth', 'cloth_mask', 'image_densepose']
+            target_keys = ['image', 'agn', 'agn_mask', 'cloth', 'cloth_mask', 'image_densepose', 'gt_cloth_warped_mask']
             item.update(transform_flip(**{k:item[k] for k in target_keys}))
 
             # apply transform_shift_scale
