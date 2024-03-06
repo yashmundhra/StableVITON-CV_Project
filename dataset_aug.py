@@ -71,43 +71,60 @@ class VITONHDDataset_aug(Dataset):
 
     def __len__(self):
         return len(self.im_names)
+    
+    def get_image_path(self, dir, idx):
+        return opj(self.drd, self.data_type, dir, self.im_names[idx])
+    
     def __getitem__(self, idx):
         img_fn = self.im_names[idx]
         cloth_fn = self.c_names[self.pair_key][idx]
 
-        agn = cv.imread(opj(self.drd, self.data_type, "agnostic-v3.2", self.im_names[idx]))
-        agn_mask = cv.imread(opj(self.drd, self.data_type, "agnostic-mask", self.im_names[idx]))
+        item = dict(
+            agn = cv.imread(self.get_image_path("agnostic-v3.2", idx)),
+            agn_mask = cv.imread(self.get_image_path("agnostic-mask", idx).replace('.jpg', '_mask.png')),
 
-        cloth = cv.imread(opj(self.drd, self.data_type, "cloth", self.c_names[self.pair_key][idx]))
+            cloth = cv.imread(self.get_image_path("cloth", idx)),
+            cloth_mask = cv.imread(self.get_image_path('cloth-mask', idx)),
 
-        image = cv.imread(opj(self.drd, self.data_type, "image", self.im_names[idx]))
-        image_densepose = cv.imread(opj(self.drd, self.data_type, "image-densepose", self.im_names[idx]))
+            image = cv.imread(self.get_image_path('image', idx)),
+            image_densepose = cv.imread(self.get_image_path('image-densepose', idx)),
 
-        agn, agn_mask, cloth, image, image_densepose =\
-            map(lambda img: cv.resize(img, (self.img_W, self.img_H)), [agn, agn_mask, cloth, image, image_densepose])
+            gt_cloth_warped_mask = cv.imread(self.get_image_path('gt_cloth_warped_mask', idx).replace('.jpg', '.png')),
+        )
+
+        # resize all images/masks
+        for k in item.keys():
+            item[k] = cv.resize(item[k], (self.img_W, self.img_H))
         
         if not self.is_test: # train
-            aug = transform_flip(image=cloth , agn=agn, agn_mask=agn_mask, image_densepose=image_densepose)
-            cloth, agn, agn_mask, image_densepose = \
-                aug['image'], aug['agn'], aug['agn_mask'], aug['image_densepose']
-            
-            aug = transform_shift_scale(image=image, cloth=cloth)
-            cloth, image = aug['cloth'], aug['image']
+            # apply transform_flip
+            target_keys = ['image', 'agn', 'agn_mask', 'cloth', 'cloth_mask', 'image_densepose']
+            item.update(transform_flip(**{k:item[k] for k in target_keys}))
 
-            aug = transform_color(image=image, cloth=cloth)
-            cloth, image = aug['cloth'], aug['image']
+            # apply transform_shift_scale
+            # group 1
+            target_keys = ['image', 'agn', 'agn_mask', 'image_densepose', 'gt_cloth_warped_mask']
+            item.update(transform_shift_scale(**{k:item[k] for k in target_keys}))
+            # group 2
+            aug = transform_shift_scale(image=item['cloth'], mask=item['cloth_mask'])
+            item['cloth'], item['cloth_mask'] = aug['image'], aug['mask']
+
+            # apply transform_color
+            target_keys = ['image', 'agn', 'cloth']
+            item.update(transform_color(**{k:item[k] for k in target_keys}))
         
-        agn, cloth, image, image_densepose = \
-            map(image_int_to_float, [agn, cloth, image, image_densepose])
-        agn_mask = image_int_to_float(agn_mask, is_mask=True, invert_mask=True)
+        # invert agn_mask
+        item['agn_mask'] = 255 - item['agn_mask']
+        # why?
+        # agn = agn * agn_mask[:,:,None].astype(np.float32)/255.0 + 128 * (1 - agn_mask[:,:,None].astype(np.float32)/255.0)
+
+        # normalization
+        for k in item.keys():
+            item[k] = image_int_to_float(item[k], is_mask=('mask' in k))
         
         return dict(
-            agn=agn,
-            agn_mask=agn_mask,
-            cloth=cloth,
-            image=image,
-            image_densepose=image_densepose,
             txt="",
             img_fn=img_fn,
             cloth_fn=cloth_fn,
+            **item
         )
