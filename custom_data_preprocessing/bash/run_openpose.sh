@@ -1,4 +1,4 @@
-openpose_path="/home/workspace/openpose"
+openpose_path="/home/public/openpose"
 
 image_path="/home/jun/StableVITON/custom_data_preprocessing/data/image"
 output_path_prefix="/home/jun/StableVITON/custom_data_preprocessing/data/openpose"

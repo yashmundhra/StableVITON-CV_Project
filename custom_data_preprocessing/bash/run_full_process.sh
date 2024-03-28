@@ -2,4 +2,4 @@
 . bash/run_densepose.sh
 . bash/run_human_parsing.sh
 
-conda run -n agnostic_map python ./script/agnostic_map.py
+conda run -n StableVITON python ./script/agnostic_map.py
