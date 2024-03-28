@@ -1,6 +1,7 @@
 import json
 from os import path as osp
 import os
+import sys
 import numpy as np
 from PIL import Image, ImageDraw
 from tqdm import tqdm
@@ -75,9 +76,11 @@ def get_img_agnostic(img, parse, pose_data):
     return agnostic, mask
 
 if __name__ =="__main__":
-    data_path = './data'
-    output_path = './data/agnostic-v3.2'
-    mask_path = './data/agnostic-mask'
+    data_path, output_path, mask_path = sys.argv[1:]
+
+    # data_path = './data'
+    # output_path = './data/agnostic-v3.2'
+    # mask_path = './data/agnostic-mask'
     
     os.makedirs(output_path, exist_ok=True)
     os.makedirs(mask_path, exist_ok=True)
