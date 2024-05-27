@@ -109,10 +109,10 @@ dependencies:
       - tensorboard-data-server==0.7.2
       - timm==0.9.12
       - tokenizers==0.13.3
-      - torch==2.0.0+cu117
-      - torchaudio==2.0.1+cu117
-      - torchmetrics==1.3.0
-      - torchvision==0.15.1+cu117
+      - torch
+      - torchaudio
+      - torchmetrics
+      - torchvision
       - tqdm==4.66.1
       - transformers==4.33.2
       - triton==2.0.0
