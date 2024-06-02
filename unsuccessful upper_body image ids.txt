@@ -1,0 +1,399 @@
+unsuccessful upper_body image ids (291 ok)
+
+No garment found in 00008_00.jpg
+1
+No garment found in 00035_00.jpg
+2
+No garment found in 00064_00.jpg
+3
+No garment found in 00074_00.jpg
+4
+No garment found in 00084_00.jpg
+5
+No garment found in 00096_00.jpg
+6
+No garment found in 00135_00.jpg
+7
+No garment found in 00145_00.jpg
+8
+No garment found in 00205_00.jpg
+9
+No garment found in 00260_00.jpg
+10
+No garment found in 00272_00.jpg
+11
+No garment found in 00291_00.jpg
+12
+No garment found in 00339_00.jpg
+13
+No garment found in 00348_00.jpg
+14
+No garment found in 00349_00.jpg
+15
+No garment found in 00373_00.jpg
+16
+No garment found in 00400_00.jpg
+17
+No garment found in 00428_00.jpg
+18
+No garment found in 00462_00.jpg
+19
+No garment found in 00466_00.jpg
+20
+No garment found in 00470_00.jpg
+21
+No garment found in 00482_00.jpg
+22
+No garment found in 00502_00.jpg
+23
+No garment found in 00503_00.jpg
+24
+No garment found in 00563_00.jpg
+25
+No garment found in 00583_00.jpg
+26
+No garment found in 00592_00.jpg
+27
+No garment found in 00599_00.jpg
+28
+No garment found in 00611_00.jpg
+29
+No garment found in 00617_00.jpg
+30
+No garment found in 00620_00.jpg
+31
+No garment found in 00627_00.jpg
+32
+No garment found in 00713_00.jpg
+33
+No garment found in 00725_00.jpg
+34
+No garment found in 00739_00.jpg
+35
+No garment found in 00785_00.jpg
+36
+No garment found in 00789_00.jpg
+37
+No garment found in 00821_00.jpg
+38
+No garment found in 00828_00.jpg
+39
+No garment found in 00848_00.jpg
+40
+No garment found in 00877_00.jpg
+41
+No garment found in 00911_00.jpg
+42
+No garment found in 00925_00.jpg
+43
+No garment found in 00939_00.jpg
+44
+No garment found in 00955_00.jpg
+45
+No garment found in 00989_00.jpg
+46
+No garment found in 00991_00.jpg
+47
+No garment found in 01006_00.jpg
+48
+No garment found in 01011_00.jpg
+49
+No garment found in 01035_00.jpg
+50
+No garment found in 01048_00.jpg
+51
+No garment found in 01051_00.jpg
+52
+No garment found in 01057_00.jpg
+53
+No garment found in 01092_00.jpg
+54
+No garment found in 01123_00.jpg
+55
+No garment found in 01140_00.jpg
+56
+No garment found in 01163_00.jpg
+57
+No garment found in 01175_00.jpg
+58
+No garment found in 01176_00.jpg
+59
+No garment found in 01181_00.jpg
+60
+No garment found in 01188_00.jpg
+61
+No garment found in 01198_00.jpg
+62
+No garment found in 01214_00.jpg
+63
+No garment found in 01215_00.jpg
+64
+No garment found in 01216_00.jpg
+65
+No garment found in 01248_00.jpg
+66
+No garment found in 01302_00.jpg
+67
+No garment found in 01320_00.jpg
+68
+No garment found in 01341_00.jpg
+69
+No garment found in 01390_00.jpg
+70
+No garment found in 01409_00.jpg
+71
+No garment found in 01416_00.jpg
+72
+No garment found in 01449_00.jpg
+73
+No garment found in 01474_00.jpg
+74
+No garment found in 01483_00.jpg
+75
+No garment found in 01486_00.jpg
+76
+No garment found in 01517_00.jpg
+77
+No garment found in 01528_00.jpg
+78
+No garment found in 01609_00.jpg
+79
+No garment found in 01644_00.jpg
+80
+No garment found in 01670_00.jpg
+81
+No garment found in 01696_00.jpg
+82
+No garment found in 01705_00.jpg
+83
+No garment found in 01713_00.jpg
+84
+No garment found in 01727_00.jpg
+85
+No garment found in 01731_00.jpg
+86
+No garment found in 01741_00.jpg
+87
+No garment found in 01745_00.jpg
+88
+No garment found in 01748_00.jpg
+89
+No garment found in 01753_00.jpg
+90
+No garment found in 01755_00.jpg
+91
+No garment found in 01796_00.jpg
+92
+No garment found in 01812_00.jpg
+93
+No garment found in 01814_00.jpg
+94
+No garment found in 01850_00.jpg
+95
+No garment found in 01874_00.jpg
+96
+No garment found in 01875_00.jpg
+97
+No garment found in 01893_00.jpg
+98
+No garment found in 01900_00.jpg
+99
+No garment found in 01923_00.jpg
+100
+No garment found in 01936_00.jpg
+101
+No garment found in 01940_00.jpg
+102
+No garment found in 01959_00.jpg
+103
+No garment found in 01961_00.jpg
+104
+No garment found in 01967_00.jpg
+105
+No garment found in 01969_00.jpg
+106
+No garment found in 01973_00.jpg
+107
+No garment found in 01985_00.jpg
+108
+No garment found in 02007_00.jpg
+109
+No garment found in 02008_00.jpg
+110
+No garment found in 02015_00.jpg
+111
+No garment found in 02016_00.jpg
+112
+No garment found in 02017_00.jpg
+113
+No garment found in 02023_00.jpg
+114
+No garment found in 02030_00.jpg
+115
+No garment found in 02031_00.jpg
+116
+No garment found in 02039_00.jpg
+117
+No garment found in 02046_00.jpg
+118
+No garment found in 02070_00.jpg
+119
+No garment found in 02115_00.jpg
+120
+No garment found in 02151_00.jpg
+121
+No garment found in 02157_00.jpg
+122
+No garment found in 02167_00.jpg
+123
+No garment found in 02179_00.jpg
+124
+No garment found in 02196_00.jpg
+125
+No garment found in 02204_00.jpg
+126
+No garment found in 02208_00.jpg
+127
+No garment found in 02253_00.jpg
+128
+No garment found in 02254_00.jpg
+129
+No garment found in 02259_00.jpg
+130
+No garment found in 02268_00.jpg
+131
+No garment found in 02270_00.jpg
+132
+No garment found in 02273_00.jpg
+133
+No garment found in 02291_00.jpg
+134
+No garment found in 02305_00.jpg
+135
+No garment found in 02307_00.jpg
+136
+No garment found in 02311_00.jpg
+137
+No garment found in 02365_00.jpg
+138
+No garment found in 02372_00.jpg
+139
+No garment found in 02425_00.jpg
+140
+No garment found in 02427_00.jpg
+141
+No garment found in 02523_00.jpg
+142
+No garment found in 02527_00.jpg
+143
+No garment found in 02557_00.jpg
+144
+No garment found in 02565_00.jpg
+145
+No garment found in 02583_00.jpg
+146
+No garment found in 02605_00.jpg
+147
+No garment found in 02640_00.jpg
+148
+No garment found in 02645_00.jpg
+149
+No garment found in 02660_00.jpg
+150
+No garment found in 02663_00.jpg
+151
+No garment found in 02673_00.jpg
+152
+No garment found in 02727_00.jpg
+153
+No garment found in 02759_00.jpg
+154
+No garment found in 02770_00.jpg
+155
+No garment found in 02790_00.jpg
+156
+No garment found in 02810_00.jpg
+157
+No garment found in 02824_00.jpg
+158
+No garment found in 02844_00.jpg
+159
+No garment found in 02849_00.jpg
+160
+No garment found in 02861_00.jpg
+161
+No garment found in 02871_00.jpg
+162
+No garment found in 02894_00.jpg
+163
+No garment found in 02902_00.jpg
+164
+No garment found in 02926_00.jpg
+165
+No garment found in 02964_00.jpg
+166
+No garment found in 02966_00.jpg
+167
+No garment found in 02967_00.jpg
+168
+No garment found in 02991_00.jpg
+169
+No garment found in 03003_00.jpg
+170
+No garment found in 03052_00.jpg
+171
+No garment found in 03061_00.jpg
+172
+No garment found in 03073_00.jpg
+173
+No garment found in 03082_00.jpg
+174
+No garment found in 03089_00.jpg
+175
+No garment found in 03123_00.jpg
+176
+No garment found in 03126_00.jpg
+177
+No garment found in 03145_00.jpg
+178
+No garment found in 03158_00.jpg
+179
+No garment found in 03168_00.jpg
+180
+No garment found in 03173_00.jpg
+181
+No garment found in 03178_00.jpg
+182
+No garment found in 03184_00.jpg
+183
+No garment found in 03186_00.jpg
+184
+No garment found in 03191_00.jpg
+185
+No garment found in 03192_00.jpg
+186
+No garment found in 03199_00.jpg
+187
+No garment found in 03222_00.jpg
+188
+No garment found in 03224_00.jpg
+189
+No garment found in 03284_00.jpg
+190
+
+Deleted since no good
+00330_00 (not full garment)
+00463_00 (zipper)
+00499_00 (ring)
+00566_00 (zipper)
+00654_00 (detail on garment)
+00986_00 (whole body)
+01074_00 (detail on garment)
+01412_00 (whole body)
+01430_00 (detail on garment)
+02020_00 (detail on garment)
+02532_00 (whole body)
+02876_00 (whole body)
+02948_00 (detail on garment)
+03025_00 (whole body)
+03067_00 (whole body)
