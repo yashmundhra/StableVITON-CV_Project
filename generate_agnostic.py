@@ -10,16 +10,19 @@ for id in ids:
     mask_name = f"000{id}_00_mask.jpg"
     mask = cv2.imread(os.path.join(os.getcwd(), f"masks/{mask_name}"))
 
-    # Flip mask to respect the format of the agnostic mask from viton-hd (don't use for the creation of agnostic)
+    # Dilate mask
+    kernel = cv2.getStructuringElement(cv2.MORPH_DILATE, (5, 5))
+    mask = cv2.dilate(mask, kernel, iterations=3)
+
+    # Flip mask to respect the format of the agnostic mask from viton-hd
     mask = cv2.bitwise_not(mask)
     # cv2.imwrite(os.path.join(os.getcwd(), f"DATA/zalando-hd-resized/masks/{mask_name}"), flip_mask)
 
     # Covert mask to greyscale
     mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+    # Binarize mask
+    _, mask = cv2.threshold(mask, 127, 255, cv2.THRESH_BINARY)
     mask = cv2.resize(mask, (img.shape[1], img.shape[0]))
-    # Set all low values to 0, all high values to 1
-    mask[mask < 128] = 0
-    mask[mask >= 128] = 1
 
     # Make agnostic mask grey
     agnostic = np.copy(img)
