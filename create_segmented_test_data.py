@@ -23,7 +23,7 @@ def copy_files_based_on_name(src_folder, dest_folder_mask, dest_folder_non_mask)
 
 def get_relevant_test_ids():
     # reads a txt file
-    with open(os.path.join(os.getcwd(), 'DATA', 'test_pairs.txt'), 'r') as f:
+    with open(os.path.join(os.getcwd(), 'DATA', 'train_pairs.txt'), 'r') as f:
         image_ids = []
         for line in f.readlines():
             person = line.split(' ')[0]
