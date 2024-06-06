@@ -62,10 +62,20 @@ def copy_relevant_test_files(src_folder, dest_folder, image_ids):
 
 
 images_ids = get_relevant_test_ids()
-copy_relevant_test_files("test", "test_segment", images_ids)  # from each subfolder in test
+
+# Train images
+copy_relevant_test_files("train", "train_segment", images_ids)  # from each subfolder in test
+
+src_folder = "train_masks"
+dest_folder_mask = "train_segment/agnostic-mask"
+dest_folder_non_mask = "train_segment/agnostic-v3.2"
+copy_files_based_on_name(src_folder, dest_folder_mask, dest_folder_non_mask)
+
+# Test images
+# copy_relevant_test_files("test", "test_segment", images_ids)  # from each subfolder in test
 
 # Copy newly segmented files to the corresponding folders
-src_folder = "masks"
-dest_folder_mask = "test_segment/agnostic-mask"
-dest_folder_non_mask = "test_segment/agnostic-v3.2"
-copy_files_based_on_name(src_folder, dest_folder_mask, dest_folder_non_mask)
+# src_folder = "masks"
+# dest_folder_mask = "test_segment/agnostic-mask"
+# dest_folder_non_mask = "test_segment/agnostic-v3.2"
+# copy_files_based_on_name(src_folder, dest_folder_mask, dest_folder_non_mask)
