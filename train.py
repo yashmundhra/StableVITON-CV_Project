@@ -60,7 +60,7 @@ if __name__ == '__main__':
     )
         
     viton_config_path_model = './configs/VITON512.yaml'
-    resume_path = '../stableviton_lightning/models/clone_with_control_model_20240204.ckpt'    
+    resume_path = './ckpts/ckpts/VITONHD_PBE_pose.ckpt'    
     batch_size = 10
     logger_freq = 300
     learning_rate = 1e-4
