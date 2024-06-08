@@ -39,7 +39,7 @@ class EpochEndSlackNotifier(Callback):
                 message = f"Server : {ip_address} \n\nEpoch {epoch + 1} checkpoints saved ! \n\n Learning rate : {learning_rate}"
                 self.messenger.send_message(message)
 
-if __name__ == '__main__':     
+def train():    
     current_time = datetime.now().strftime('%Y%m%d_%Hh%Mm%Ss')   
     
     # 체크포인트 콜백 설정
