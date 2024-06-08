@@ -93,6 +93,7 @@ model:
       target: ldm.modules.image_encoders.modules.FrozenCLIPImageEmbedder
 dataset_name: VITONHDDataset
 default_prompt: ""
+resume_path: /kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt
 log_images_kwargs:
   unconditional_guidance_scale: 5.0
 
