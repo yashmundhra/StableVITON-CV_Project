@@ -39,7 +39,7 @@ class EpochEndSlackNotifier(Callback):
                 message = f"Server : {ip_address} \n\nEpoch {epoch + 1} checkpoints saved ! \n\n Learning rate : {learning_rate}"
                 self.messenger.send_message(message)
 
-def train():    
+def train(viton_config_path_model, resume_path, data_root_dir, gpus, batch_size, epochs):    
     current_time = datetime.now().strftime('%Y%m%d_%Hh%Mm%Ss')   
     
     # 체크포인트 콜백 설정
@@ -52,19 +52,19 @@ def train():
     )
     
     trainer = pl.Trainer(
-        gpus=1,
+        gpus=gpus,
         #accelerator='ddp',
         precision=32,
         max_epochs=2000,
         callbacks=[checkpoint_callback]  
     )
         
-    viton_config_path_model = '/kaggle/working/StableVITON-CV_Project/configs/VITON512.yaml'
-    resume_path = '/kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt'
-    batch_size = 10
+    # viton_config_path_model = '/kaggle/working/StableVITON-CV_Project/configs/VITON512.yaml'
+    # resume_path = '/kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt'
+    batch_size = batch_size
     logger_freq = 300
     learning_rate = 1e-4
-    epochs = 2000     
+    epochs = epochs     
     
     if trainer.global_rank == 0:
         # 설정 저장 로직         
@@ -130,7 +130,8 @@ def train():
     #model.only_mid_control = only_mid_control
 
     # Misc
-    dataset = VITONHDDataset_aug(data_root_dir='/kaggle/working/vitonhd-data',img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
+    # '/kaggle/working/vitonhd-data'
+    dataset = VITONHDDataset_aug(data_root_dir=data_root_dir,img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
     dataloader = DataLoader(dataset, num_workers=4, batch_size=batch_size, shuffle=True)
 
     
