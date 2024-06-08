@@ -59,8 +59,8 @@ def train():
         callbacks=[checkpoint_callback]  
     )
         
-    viton_config_path_model = './configs/VITON512.yaml'
-    resume_path = './ckpts/ckpts/VITONHD_PBE_pose.ckpt'    
+    viton_config_path_model = 'kaggle/working/StableVITON-CV_Project/configs/VITON512.yaml'
+    resume_path = '/kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt'    
     batch_size = 10
     logger_freq = 300
     learning_rate = 1e-4
@@ -130,7 +130,7 @@ def train():
     #model.only_mid_control = only_mid_control
 
     # Misc
-    dataset = VITONHDDataset_aug(data_root_dir='../stableviton_lightning/datasets',img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
+    dataset = VITONHDDataset_aug(data_root_dir='/kaggle/working/vitonhd-data',img_H=512, img_W=384, is_paired=True, is_test=False, is_sorted=False)
     dataloader = DataLoader(dataset, num_workers=4, batch_size=batch_size, shuffle=True)
 
     
