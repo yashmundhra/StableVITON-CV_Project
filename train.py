@@ -121,11 +121,12 @@ def train(viton_config_path_model, resume_path, data_root_dir, gpus, batch_size,
             yaml.dump(config, file, sort_keys=False)
             
         print('Configs !')
-        print(config)
     
     
     model = create_model(viton_config_path_model).cpu()
-    model.load_state_dict(load_state_dict(resume_path, location='cpu'))
+    state_dict = load_state_dict(resume_path, location='cpu')
+    del state_dict["cond_stage_model.transformer.vision_model.embeddings.position_ids"]
+    model.load_state_dict(state_dict)
     model.learning_rate = learning_rate
     #model.only_mid_control = only_mid_control
 
