@@ -59,8 +59,8 @@ def train():
         callbacks=[checkpoint_callback]  
     )
         
-    viton_config_path_model = 'kaggle/working/StableVITON-CV_Project/configs/VITON512.yaml'
-    resume_path = '/kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt'    
+    viton_config_path_model = '/kaggle/working/StableVITON-CV_Project/configs/VITON512.yaml'
+    resume_path = '/kaggle/input/vitonhd-pbe-pose-checkpoint/VITONHD_PBE_pose.ckpt'
     batch_size = 10
     logger_freq = 300
     learning_rate = 1e-4
