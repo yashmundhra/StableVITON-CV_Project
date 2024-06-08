@@ -1,3 +1,5 @@
+import argparse
+import json
 import numpy as np
 
 def tensor2img(x):
@@ -14,3 +16,22 @@ def tensor2img(x):
     if x.shape[-1] == 1:
         x = np.concatenate([x,x,x], axis=-1)
     return x
+
+def save_args(args, to_path):
+    with open(to_path, "w") as f:
+        json.dump(args.__dict__, f, indent=2)
+def load_args(from_path, is_test=True):
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+    with open(from_path, "r") as f:
+        args.__dict__ = json.load(f)
+    args.is_test = is_test
+    if "E_name" not in args.__dict__.keys():
+        args.E_name = "basic"
+    return args 
+
+def resize_mask(m, shape):
+    m = F.interpolate(m, shape)
+    m[m > 0.5] = 1
+    m[m < 0.5] = 0
+    return m 
