@@ -40,8 +40,8 @@ transform_color = A.Compose([
     A.HueSaturationValue(hue_shift_limit=5, sat_shift_limit=5, val_shift_limit=5, p=0.5),
     A.RandomBrightnessContrast(brightness_limit=0, contrast_limit=0.3, p=0.5)],
     additional_targets={
+        "agn": "image",
         'cloth': 'image',
         # 'cloth_mask': 'mask',
-        "agn": "image",
     }
 )
