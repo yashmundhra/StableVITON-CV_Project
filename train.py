@@ -52,7 +52,8 @@ def train(viton_config_path_model, resume_path, data_root_dir, gpus, batch_size,
     )
     
     trainer = pl.Trainer(
-        gpus=gpus,
+        accelerator="auto",
+        # devices=gpus,
         #accelerator='ddp',
         precision=32,
         max_epochs=2000,
