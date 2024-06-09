@@ -81,7 +81,7 @@ class VITONHDDataset_aug(Dataset):
 
         item = dict(
             agn = cv.imread(self.get_image_path("agnostic-v3.2", idx)),
-            agn_mask = cv.imread(self.get_image_path("agnostic-mask", idx).replace('.jpg', '_mask.png')),
+            agn_mask = cv.imread(self.get_image_path("agnostic-mask", idx).replace('.jpg', '_mask.jpg')),
 
             cloth = cv.imread(self.get_image_path("cloth", idx)),
             cloth_mask = cv.imread(self.get_image_path('cloth-mask', idx)),
@@ -89,7 +89,7 @@ class VITONHDDataset_aug(Dataset):
             image = cv.imread(self.get_image_path('image', idx)),
             image_densepose = cv.imread(self.get_image_path('image-densepose', idx)),
 
-            gt_cloth_warped_mask = cv.imread(self.get_image_path('gt_cloth_warped_mask', idx).replace('.jpg', '.png')),
+            gt_cloth_warped_mask = cv.imread(self.get_image_path('gt_cloth_warped_mask', idx).replace('.jpg', '.jpg')),
         )
 
         # resize all images/masks

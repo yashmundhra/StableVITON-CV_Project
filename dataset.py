@@ -59,7 +59,7 @@ class VITONHDDataset(Dataset):
         cloth_fn = self.c_names[self.pair_key][idx]
 
         agn = cv.imread(opj(self.drd, self.data_type, "agnostic-v3.2", self.im_names[idx]))
-        agn_mask = cv.imread(opj(self.drd, self.data_type, "agnostic-mask", self.im_names[idx].replace(".jpg", "_mask.png")))
+        agn_mask = cv.imread(opj(self.drd, self.data_type, "agnostic-mask", self.im_names[idx].replace(".jpg", "_mask.jpg")))
 
         cloth = cv.imread(opj(self.drd, self.data_type, "cloth", self.c_names[self.pair_key][idx]))
 
