@@ -102,7 +102,7 @@ if __name__ =="__main__":
 
         # load parsing image
         im = Image.open(osp.join(data_path, 'image', im_name))
-        label_name = osp.splitext(im_name)[0] + '.png'
+        label_name = osp.splitext(im_name)[0] + '.jpg'
         im_label = Image.open(osp.join(data_path, 'image-parse-v3', label_name))
 
         agnostic, mask = get_img_agnostic(im, im_label, pose_data)
