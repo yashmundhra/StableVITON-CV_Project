@@ -41,6 +41,7 @@ transform_color = A.Compose([
     A.RandomBrightnessContrast(brightness_limit=0, contrast_limit=0.3, p=0.5)],
     additional_targets={
         'cloth': 'image',
-        'cloth_mask': 'mask',
+        # 'cloth_mask': 'mask',
+        "agn": "image",
     }
 )
